@@ -2,10 +2,12 @@ package com.gildedtros;
 
 public class ItemQualitySolution {
     // Keeps the correct quality and sellIn values for each day
-    private int[] sellIn;
-    private int[] quality;
+    private final String name;
+    private final int[] sellIn;
+    private final int[] quality;
 
-    public ItemQualitySolution(int[] sellIn, int[] quality) {
+    public ItemQualitySolution(String name, int[] sellIn, int[] quality) {
+        this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
     }
@@ -15,5 +17,9 @@ public class ItemQualitySolution {
     }
     public int getSellIn(int day) {
         return sellIn[day];
+    }
+
+    public String getName() {
+        return name;
     }
 }

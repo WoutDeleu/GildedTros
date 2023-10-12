@@ -62,3 +62,7 @@ class GildedTros {
         }
     }
 }
+
+// todo: Backstage passes test
+// todo: Refactor
+// todo: Test uitcommenten en doen werken
