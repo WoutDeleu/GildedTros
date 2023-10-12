@@ -13,14 +13,16 @@ public class TexttestFixture {
                 new Item("Backstage passes for Re:Factor", 15, 20),
                 new Item("Backstage passes for Re:Factor", 10, 49),
                 new Item("Backstage passes for HAXX", 5, 49),
+                // todo
                 // these smelly items do not work properly yet
                 new Item("Duplicate Code", 3, 6),
                 new Item("Long Methods", 3, 6),
-                new Item("Ugly Variable Names", 3, 6) };
+                new Item("Ugly Variable Names", 3, 6)
+        };
 
         GildedTros app = new GildedTros(items);
 
-        int days = 2;
+        int days = 4;
         if (args.length > 0) {
             days = Integer.parseInt(args[0]) + 1;
         }
