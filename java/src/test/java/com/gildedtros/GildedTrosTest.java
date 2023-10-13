@@ -31,12 +31,25 @@ class GildedTrosTest {
     @Test
     void goodWineIncrease() {
         Item[] items = new Item[] {
-                new Item("Good Wine", 20, 49),
+                new Item("Good Wine", 20, 48),
         };
         GildedTros gildedTros = new GildedTros(items);
 
         gildedTros.updateQuality();
-        assertEquals(gildedTros.items[0].quality, 50);
+        assertEquals(gildedTros.items[0].quality, 49);
+    }
+
+    @Test
+    void goodWineIncreaseTwiceAsFast() {
+        Item[] items = new Item[] {
+                new Item("Good Wine", 1, 10),
+        };
+        GildedTros gildedTros = new GildedTros(items);
+
+        gildedTros.updateQuality();
+        assertEquals(gildedTros.items[0].quality, 11);
+        gildedTros.updateQuality();
+        assertEquals(gildedTros.items[0].quality, 13);
     }
     @Test
     void qualityNotHigherThan50() {
@@ -64,10 +77,9 @@ class GildedTrosTest {
 
     @Test
     void backstagePassesDecreasing() {
-        // todo
         Item[] items = new Item[] {
                 new Item("Backstage passes for HAXX", 13, 30),
-                // new Item("Backstage passes for huppeldepup", 13, 20)
+                new Item("Backstage passes for Re:Factor", 13, 20)
         };
         GildedTros gildedTros = new GildedTros(items);
 
@@ -75,27 +87,27 @@ class GildedTrosTest {
             gildedTros.updateQuality();
         }
         assertEquals(33, gildedTros.items[0].quality, "Fault for more than 10 days");
-        // assertEquals(21, gildedTros.items[1].quality, "Fault for 10 days or more");
+        assertEquals(23, gildedTros.items[1].quality, "Fault for 10 days or more");
 
         for (int i = 0; i < 5; i++) {
             gildedTros.updateQuality();
         }
         assertEquals(43, gildedTros.items[0].quality, "Fault for 10 days or less");
-        // assertEquals(33, gildedTros.items[0].quality, "Fault for 10 days or less");
+        assertEquals(33, gildedTros.items[1].quality, "Fault for 10 days or less");
 
         gildedTros.updateQuality();
         assertEquals(46, gildedTros.items[0].quality, "Fault for 5 days or less");
-        // assertEquals(36, gildedTros.items[0].quality, "Fault for 5 days or less");
+        assertEquals(36, gildedTros.items[1].quality, "Fault for 5 days or less");
 
         for(int i = 0; i < 4; i++) {
             gildedTros.updateQuality();
         }
         assertEquals(50, gildedTros.items[0].quality, "Fault for 5 days or less");
-        // assertEquals(48, gildedTros.items[0].quality, "Fault for 5 days or less");
+        assertEquals(48, gildedTros.items[1].quality, "Fault for 5 days or less");
 
         gildedTros.updateQuality();
         assertEquals(0, gildedTros.items[0].quality, "Fault when conference has passed");
-        // assertEquals(0, gildedTros.items[1].quality, "Fault when conference has passed");
+        assertEquals(0, gildedTros.items[1].quality, "Fault when conference has passed");
 
     }
 
@@ -108,6 +120,26 @@ class GildedTrosTest {
 
         gildedTros.updateQuality();
         assertEquals(80, gildedTros.items[0].quality);
+    }
+
+    @Test
+    void smellyItems() {
+        Item[] items = new Item[] {
+                new Item("Duplicate Code", 1, 20),
+                new Item("Long Methods", 1, 20),
+                new Item("Ugly Variable Names", 1, 20)
+        };
+        GildedTros gildedTros = new GildedTros(items);
+
+        gildedTros.updateQuality();
+        assertEquals(18, gildedTros.items[0].quality);
+        assertEquals(18, gildedTros.items[1].quality);
+        assertEquals(18, gildedTros.items[2].quality);
+
+        gildedTros.updateQuality();
+        assertEquals(14, gildedTros.items[0].quality);
+        assertEquals(14, gildedTros.items[1].quality);
+        assertEquals(14, gildedTros.items[2].quality);
     }
     @Test
     void goldenStandardTest() {
@@ -134,13 +166,9 @@ class GildedTrosTest {
                 new ItemQualitySolution("Backstage passes for Re:Factor", new int[] {15, 14, 13, 12}, new int[] {20, 21, 22, 23}),
                 new ItemQualitySolution("Backstage passes for Re:Factor", new int[] {10, 9, 8, 7}, new int[] {49, 50, 50, 50}),
                 new ItemQualitySolution("Backstage passes for HAXX", new int[] {5, 4, 3, 2}, new int[] {49, 50, 50, 50}),
-                // todo: Remove, and replace with correct solution
-                new ItemQualitySolution("Duplicate Code", new int[] {3, 2, 1, 0}, new int[] {6, 5, 4, 3}),
-                new ItemQualitySolution("Long Methods", new int[] {3, 2, 1, 0}, new int[] {6, 5, 4, 3}),
-                new ItemQualitySolution("Ugly Variable Names", new int[] {3, 2, 1, 0}, new int[] {6, 5, 4, 3})
-                // new ItemQualitySolution(new int[] {3, 2, 1, 0}, new int[] {6, 4, 2, 0}),
-                // new ItemQualitySolution(new int[] {3, 2, 1, 0}, new int[] {6, 4, 2, 0}),
-                // new ItemQualitySolution(new int[] {3, 2, 1, 0}, new int[] {6, 4, 2, 0})
+                new ItemQualitySolution("Duplicate Code", new int[] {3, 2, 1, 0}, new int[] {6, 4, 2, 0}),
+                new ItemQualitySolution("Long Methods", new int[] {3, 2, 1, 0}, new int[] {6, 4, 2, 0}),
+                new ItemQualitySolution("Ugly Variable Names", new int[] {3, 2, 1, 0}, new int[] {6, 4, 2, 0})
         };
         GildedTros gildedTros = new GildedTros(items);
         int days = 4;
