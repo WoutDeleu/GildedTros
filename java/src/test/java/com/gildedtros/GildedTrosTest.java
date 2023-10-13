@@ -76,7 +76,7 @@ class GildedTrosTest {
     }
 
     @Test
-    void backstagePassesDecreasing() {
+    void backstagePassesDecrease() {
         Item[] items = new Item[] {
                 new Item("Backstage passes for HAXX", 13, 30),
                 new Item("Backstage passes for Re:Factor", 13, 20)
