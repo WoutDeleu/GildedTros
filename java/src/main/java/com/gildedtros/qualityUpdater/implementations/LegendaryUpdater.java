@@ -1,9 +1,9 @@
-package com.gildedtros.qualityUpdater.factory;
+package com.gildedtros.qualityUpdater.implementations;
 
 import com.gildedtros.Item;
 import com.gildedtros.qualityUpdater.QualityUpdater;
 
-public class UpdateLegendary implements QualityUpdater {
+public class LegendaryUpdater implements QualityUpdater {
     public void updateQuality(Item item) {
         // Legendary items never change
     }
