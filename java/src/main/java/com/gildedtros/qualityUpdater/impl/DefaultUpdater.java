@@ -7,10 +7,7 @@ public class DefaultUpdater implements QualityUpdater {
 
     public void updateQuality(Item item) {
         item.decreaseSellIn();
-        if (item.isExpired()) {
-            item.decreaseQualityBy(2);
-        } else {
-            item.decreaseQualityBy(1);
-        }
+        if (item.isExpired()) item.decreaseQualityBy(2);
+        else item.decreaseQualityBy(1);
     }
 }

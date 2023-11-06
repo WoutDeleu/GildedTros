@@ -38,7 +38,15 @@ public class Item {
         return this.sellIn < 0;
     }
 
-    public boolean closerThanToEvent(int days) {
-        return this.sellIn < days;
+    public boolean closerToEventThan(int days) {
+        return this.sellIn <= days;
+    }
+
+    public boolean willExpire() {
+        return this.sellIn < 1;
+    }
+
+    public void setQualityToZero() {
+        this.quality = 0;
     }
 }

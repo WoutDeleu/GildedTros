@@ -11,9 +11,7 @@ class GildedTros {
 
     public void updateQuality() {
         QualityUpdaterFactory factory = new QualityUpdaterFactory();
-        for (Item item : items) {
-            factory.getUpdater(item.name).updateQuality(item);
-        }
+        for (Item item : items) factory.getUpdater(item.name).updateQuality(item);
     }
 
 }
