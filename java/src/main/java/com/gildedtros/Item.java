@@ -30,4 +30,15 @@ public class Item {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
+    public void decreaseSellIn() {
+        this.sellIn--;
+    }
+
+    public boolean isExpired() {
+        return this.sellIn < 0;
+    }
+
+    public boolean closerThanToEvent(int days) {
+        return this.sellIn < days;
+    }
 }
