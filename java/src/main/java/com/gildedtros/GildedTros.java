@@ -1,6 +1,6 @@
 package com.gildedtros;
 
-import com.gildedtros.qualityUpdater.factory.QualityUpdaterFactory;
+import com.gildedtros.qualityUpdater.factories.QualityUpdaterFactory;
 
 class GildedTros {
     Item[] items;

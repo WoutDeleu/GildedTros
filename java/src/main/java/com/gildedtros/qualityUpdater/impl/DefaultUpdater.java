@@ -1,4 +1,4 @@
-package com.gildedtros.qualityUpdater.implementations;
+package com.gildedtros.qualityUpdater.impl;
 
 import com.gildedtros.Item;
 import com.gildedtros.qualityUpdater.QualityUpdater;
@@ -6,8 +6,10 @@ import com.gildedtros.qualityUpdater.QualityUpdater;
 public class DefaultUpdater implements QualityUpdater {
 
     public void updateQuality(Item item) {
-        int factor = --item.sellIn < 0 ? 2 : 1;
-        item.quality -= factor;
-        if (item.quality < 0) item.quality = 0;
+        if (--item.sellIn < 0) {
+            item.decreaseQualityBy(2);
+        } else {
+            item.decreaseQualityBy(1);
+        }
     }
 }

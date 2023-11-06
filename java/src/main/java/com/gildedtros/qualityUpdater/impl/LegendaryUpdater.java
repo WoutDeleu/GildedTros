@@ -1,4 +1,4 @@
-package com.gildedtros.qualityUpdater.implementations;
+package com.gildedtros.qualityUpdater.impl;
 
 import com.gildedtros.Item;
 import com.gildedtros.qualityUpdater.QualityUpdater;

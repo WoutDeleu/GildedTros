@@ -1,5 +1,7 @@
 package com.gildedtros;
 
+import static com.gildedtros.qualityUpdater.QualityUpdater.MAX_QUALITY;
+
 public class Item {
 
     public String name;
@@ -13,9 +15,19 @@ public class Item {
         this.sellIn = sellIn;
         this.quality = quality;
     }
+    public void decreaseQualityBy(int decreaseBy) {
+        this.quality -= decreaseBy;
+        if (this.quality < 0) this.quality = 0;
+    }
+
+    public void increaseQualityBy(int increaseBy) {
+        this.quality += increaseBy;
+        if (this.quality > MAX_QUALITY) this.quality = MAX_QUALITY;
+    }
 
    @Override
    public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
 }

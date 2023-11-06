@@ -1,7 +1,7 @@
-package com.gildedtros.qualityUpdater.factory;
+package com.gildedtros.qualityUpdater.factories;
 
 import com.gildedtros.qualityUpdater.*;
-import com.gildedtros.qualityUpdater.implementations.*;
+import com.gildedtros.qualityUpdater.impl.*;
 
 import java.util.Arrays;
 
