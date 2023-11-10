@@ -1,10 +1,11 @@
 package com.gildedtros.qualityUpdater.impl;
 
 import com.gildedtros.Item;
+import com.gildedtros.ItemWrapper;
 import com.gildedtros.qualityUpdater.QualityUpdater;
 
 public class BackstageUpdater implements QualityUpdater {
-    public void updateQuality(Item item) {
+    public void updateQuality(ItemWrapper item) {
         if (item.willExpire()) {
             item.setQualityToZero();
             return;

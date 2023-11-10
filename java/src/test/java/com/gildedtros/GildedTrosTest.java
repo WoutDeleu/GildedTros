@@ -14,18 +14,18 @@ class GildedTrosTest {
         };
         GildedTros gildedTros = new GildedTros(items);
         gildedTros.updateQuality();
-        assertEquals(0, gildedTros.items[0].sellIn);
-        assertEquals(24, gildedTros.items[0].quality);
+        assertEquals(0, items[0].sellIn);
+        assertEquals(24, items[0].quality);
 
-        assertEquals(1, gildedTros.items[1].sellIn);
-        assertEquals(0, gildedTros.items[1].quality);
+        assertEquals(1, items[1].sellIn);
+        assertEquals(0, items[1].quality);
 
         gildedTros.updateQuality();
-        assertEquals(-1, gildedTros.items[0].sellIn);
-        assertEquals(22, gildedTros.items[0].quality);
+        assertEquals(-1, items[0].sellIn);
+        assertEquals(22, items[0].quality);
 
-        assertEquals(0, gildedTros.items[1].sellIn);
-        assertEquals(0, gildedTros.items[1].quality);
+        assertEquals(0, items[1].sellIn);
+        assertEquals(0, items[1].quality);
     }
 
     @Test
@@ -36,7 +36,7 @@ class GildedTrosTest {
         GildedTros gildedTros = new GildedTros(items);
 
         gildedTros.updateQuality();
-        assertEquals(gildedTros.items[0].quality, 49);
+        assertEquals(items[0].quality, 49);
     }
 
     @Test
@@ -47,9 +47,9 @@ class GildedTrosTest {
         GildedTros gildedTros = new GildedTros(items);
 
         gildedTros.updateQuality();
-        assertEquals(gildedTros.items[0].quality, 11);
+        assertEquals(items[0].quality, 11);
         gildedTros.updateQuality();
-        assertEquals(gildedTros.items[0].quality, 13);
+        assertEquals(items[0].quality, 13);
     }
     @Test
     void qualityNotHigherThan50() {
@@ -59,9 +59,9 @@ class GildedTrosTest {
         GildedTros gildedTros = new GildedTros(items);
 
         gildedTros.updateQuality();
-        assertEquals(50, gildedTros.items[0].quality);
+        assertEquals(50, items[0].quality);
         gildedTros.updateQuality();
-        assertEquals(50, gildedTros.items[0].quality);
+        assertEquals(50, items[0].quality);
     }
 
     @Test
@@ -72,7 +72,7 @@ class GildedTrosTest {
         GildedTros gildedTros = new GildedTros(items);
 
         gildedTros.updateQuality();
-        assertEquals(10, gildedTros.items[0].sellIn);
+        assertEquals(10, items[0].sellIn);
     }
 
     @Test
@@ -86,28 +86,28 @@ class GildedTrosTest {
         for (int i = 0; i < 3; i++) {
             gildedTros.updateQuality();
         }
-        assertEquals(33, gildedTros.items[0].quality, "Fault for more than 10 days");
-        assertEquals(23, gildedTros.items[1].quality, "Fault for 10 days or more");
+        assertEquals(33, items[0].quality, "Fault for more than 10 days");
+        assertEquals(23, items[1].quality, "Fault for 10 days or more");
 
         for (int i = 0; i < 5; i++) {
             gildedTros.updateQuality();
         }
-        assertEquals(43, gildedTros.items[0].quality, "Fault for 10 days or less");
-        assertEquals(33, gildedTros.items[1].quality, "Fault for 10 days or less");
+        assertEquals(43, items[0].quality, "Fault for 10 days or less");
+        assertEquals(33, items[1].quality, "Fault for 10 days or less");
 
         gildedTros.updateQuality();
-        assertEquals(46, gildedTros.items[0].quality, "Fault for 5 days or less");
-        assertEquals(36, gildedTros.items[1].quality, "Fault for 5 days or less");
+        assertEquals(46, items[0].quality, "Fault for 5 days or less");
+        assertEquals(36, items[1].quality, "Fault for 5 days or less");
 
         for(int i = 0; i < 4; i++) {
             gildedTros.updateQuality();
         }
-        assertEquals(50, gildedTros.items[0].quality, "Fault for 5 days or less");
-        assertEquals(48, gildedTros.items[1].quality, "Fault for 5 days or less");
+        assertEquals(50, items[0].quality, "Fault for 5 days or less");
+        assertEquals(48, items[1].quality, "Fault for 5 days or less");
 
         gildedTros.updateQuality();
-        assertEquals(0, gildedTros.items[0].quality, "Fault when conference has passed");
-        assertEquals(0, gildedTros.items[1].quality, "Fault when conference has passed");
+        assertEquals(0, items[0].quality, "Fault when conference has passed");
+        assertEquals(0, items[1].quality, "Fault when conference has passed");
 
     }
 
@@ -119,7 +119,7 @@ class GildedTrosTest {
         GildedTros gildedTros = new GildedTros(items);
 
         gildedTros.updateQuality();
-        assertEquals(80, gildedTros.items[0].quality);
+        assertEquals(80, items[0].quality);
     }
 
     @Test
@@ -132,14 +132,14 @@ class GildedTrosTest {
         GildedTros gildedTros = new GildedTros(items);
 
         gildedTros.updateQuality();
-        assertEquals(18, gildedTros.items[0].quality);
-        assertEquals(18, gildedTros.items[1].quality);
-        assertEquals(18, gildedTros.items[2].quality);
+        assertEquals(18, items[0].quality);
+        assertEquals(18, items[1].quality);
+        assertEquals(18, items[2].quality);
 
         gildedTros.updateQuality();
-        assertEquals(14, gildedTros.items[0].quality);
-        assertEquals(14, gildedTros.items[1].quality);
-        assertEquals(14, gildedTros.items[2].quality);
+        assertEquals(14, items[0].quality);
+        assertEquals(14, items[1].quality);
+        assertEquals(14, items[2].quality);
     }
     @Test
     void goldenStandardTest() {
@@ -175,9 +175,9 @@ class GildedTrosTest {
 
         for (int i = 0; i < days; i++) {
             for (int j = 0; j < items.length; j++) {
-                assertEquals(solutions[j].getName(), gildedTros.items[j].name, "Name " + gildedTros.items[j].name  + " is not correct" + " (Correct: " + solutions[j].getName() +")");
-                assertEquals(solutions[j].getSellIn(i), gildedTros.items[j].sellIn, "SellIn value " + gildedTros.items[j].sellIn + " of " + gildedTros.items[j].name + " is not correct" + " (Correct: " + solutions[j].getSellIn(i) +")");
-                assertEquals(solutions[j].getQuality(i), gildedTros.items[j].quality, "Quality value " + gildedTros.items[j].quality + " of " + gildedTros.items[j].name + " is not correct" + " (Correct: " + solutions[j].getQuality(i) +")");
+                assertEquals(solutions[j].getName(), items[j].name, "Name " + items[j].name  + " is not correct" + " (Correct: " + solutions[j].getName() +")");
+                assertEquals(solutions[j].getSellIn(i), items[j].sellIn, "SellIn value " + items[j].sellIn + " of " + items[j].name + " is not correct" + " (Correct: " + solutions[j].getSellIn(i) +")");
+                assertEquals(solutions[j].getQuality(i), items[j].quality, "Quality value " + items[j].quality + " of " + items[j].name + " is not correct" + " (Correct: " + solutions[j].getQuality(i) +")");
             }
             gildedTros.updateQuality();
         }
