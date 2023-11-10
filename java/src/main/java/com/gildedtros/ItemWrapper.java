@@ -18,11 +18,6 @@ public class ItemWrapper extends Item {
         if (this.quality > MAX_QUALITY) this.quality = MAX_QUALITY;
     }
 
-   @Override
-   public String toString() {
-        return this.toString();
-    }
-
     public void decreaseSellIn() {
         this.sellIn--;
     }
