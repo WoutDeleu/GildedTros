@@ -2,48 +2,48 @@ package com.gildedtros;
 
 import static com.gildedtros.qualityUpdater.QualityUpdater.MAX_QUALITY;
 
-public class ItemWrapper {
-    private Item item;
+public class ItemWrapper extends Item {
+
     public ItemWrapper(Item item) {
-        this.item = item;
+        super(item);
     }
 
     public void decreaseQualityBy(int decreaseBy) {
-        this.item.quality -= decreaseBy;
-        if (this.item.quality < 0) this.item.quality = 0;
+        this.quality -= decreaseBy;
+        if (this.quality < 0) this.quality = 0;
     }
 
     public void increaseQualityBy(int increaseBy) {
-        this.item.quality += increaseBy;
-        if (this.item.quality > MAX_QUALITY) this.item.quality = MAX_QUALITY;
+        this.quality += increaseBy;
+        if (this.quality > MAX_QUALITY) this.quality = MAX_QUALITY;
     }
 
    @Override
    public String toString() {
-        return this.item.toString();
+        return this.toString();
     }
 
     public void decreaseSellIn() {
-        this.item.sellIn--;
+        this.sellIn--;
     }
 
     public boolean isExpired() {
-        return this.item.sellIn < 0;
+        return this.sellIn < 0;
     }
 
     public boolean closerToEventThan(int days) {
-        return this.item.sellIn <= days;
+        return this.sellIn <= days;
     }
 
     public boolean willExpire() {
-        return this.item.sellIn < 1;
+        return this.sellIn < 1;
     }
 
     public void setQualityToZero() {
-        this.item.quality = 0;
+        this.quality = 0;
     }
 
     public String getName() {
-        return this.item.name;
+        return this.name;
     }
 }
