@@ -86,28 +86,28 @@ class GildedTrosTest {
         for (int i = 0; i < 3; i++) {
             gildedTros.updateQuality();
         }
-        assertEquals(33, items[0].quality, "Fault for more than 10 days");
-        assertEquals(23, items[1].quality, "Fault for 10 days or more");
+        assertEquals(33, items[0].quality, "Fault backstage passes for more than 10 days");
+        assertEquals(23, items[1].quality, "Fault backstage passes for 10 days or more");
 
         for (int i = 0; i < 5; i++) {
             gildedTros.updateQuality();
         }
-        assertEquals(43, items[0].quality, "Fault for 10 days or less");
-        assertEquals(33, items[1].quality, "Fault for 10 days or less");
+        assertEquals(43, items[0].quality, "Fault backstage passes for 10 days or less");
+        assertEquals(33, items[1].quality, "Fault backstage passes for 10 days or less");
 
         gildedTros.updateQuality();
-        assertEquals(46, items[0].quality, "Fault for 5 days or less");
-        assertEquals(36, items[1].quality, "Fault for 5 days or less");
+        assertEquals(46, items[0].quality, "Fault backstage passes for 5 days or less");
+        assertEquals(36, items[1].quality, "Fault backstage passes for 5 days or less");
 
         for(int i = 0; i < 4; i++) {
             gildedTros.updateQuality();
         }
-        assertEquals(50, items[0].quality, "Fault for 5 days or less");
-        assertEquals(48, items[1].quality, "Fault for 5 days or less");
+        assertEquals(50, items[0].quality, "Fault backstage passes for 5 days or less");
+        assertEquals(48, items[1].quality, "Fault backstage passes for 5 days or less");
 
         gildedTros.updateQuality();
-        assertEquals(0, items[0].quality, "Fault when conference has passed");
-        assertEquals(0, items[1].quality, "Fault when conference has passed");
+        assertEquals(0, items[0].quality, "Fault backstage passes when conference has passed");
+        assertEquals(0, items[1].quality, "Fault backstage passes when conference has passed");
 
     }
 
