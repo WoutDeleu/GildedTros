@@ -1,11 +1,16 @@
-package com.gildedtros;
+package com.gildedtros.items.expiringItems;
 
-import static com.gildedtros.qualityUpdater.QualityUpdater.MAX_QUALITY;
+import com.gildedtros.items.Item;
+import com.gildedtros.items.ItemWrapper;
 
-public class ItemWrapper extends Item {
-
-    public ItemWrapper(Item item) {
+public abstract class ExpiringItem extends ItemWrapper {
+    public static final int MAX_QUALITY = 50;
+    public ExpiringItem(Item item) {
         super(item);
+    }
+    public abstract void updateQuality();
+    public void decreaseSellIn() {
+        this.sellIn--;
     }
 
     public void decreaseQualityBy(int decreaseBy) {
@@ -18,27 +23,12 @@ public class ItemWrapper extends Item {
         if (this.quality > MAX_QUALITY) this.quality = MAX_QUALITY;
     }
 
-    public void decreaseSellIn() {
-        this.sellIn--;
-    }
 
     public boolean isExpired() {
         return this.sellIn < 0;
     }
-
-    public boolean closerToEventThan(int days) {
-        return this.sellIn <= days;
-    }
-
     public boolean willExpire() {
         return this.sellIn < 1;
     }
 
-    public void setQualityToZero() {
-        this.quality = 0;
-    }
-
-    public String getName() {
-        return this.name;
-    }
 }
